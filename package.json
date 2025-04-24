@@ -1,0 +1,14 @@
+{
+ "name": "saving-satoshi",
+ "version": "1.0.0",
+ "description": "text saving satoshi",
+ "main": "index.js",
+ "license": "MIT",
+ "scripts": {
+  "start": "node index.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "dependencies": {
+  "@savingsatoshi/bech32js": "^1.0.1"
+ }
+}
