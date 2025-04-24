@@ -52,9 +52,10 @@ function hashCompressed(compressedPublicKey) {
   return ripemd160Hash.toString('hex');
 }
 
-const gethashCompresseddPublicKey = hashCompressed(
+const hashedPublicKey = hashCompressed(
   '0352351505842cdb808c0f29b8ca897d41e4a484cf15a33c7edf7f047ecef9da9d'
 );
 const publicKey = compressPublicKey(uncompressedKey);
 
-export { compressPublicKey, publicKey };
+exports.hashedPublicKey = hashedPublicKey;
+exports.publicKey = publicKey;
