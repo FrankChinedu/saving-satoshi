@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const secp256k1 = require('@savingsatoshi/secp256k1js');
 // View the library source code
 // https://github.com/saving-satoshi/secp256k1js/blob/main/secp256k1.js
@@ -83,4 +84,48 @@ function verify(sig_r, sig_s, pubkey_x, pubkey_y, msg) {
   return R.x.val % ORDER === sig_r;
 }
 
-console.log(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
+// console.log(verify(sig_r, sig_s, pubkey_x, pubkey_y, msg));
+
+// Provided by Vanderpoole
+let text = 'I am Vanderpoole and I have control of the private key Satoshi\n';
+text +=
+  'used to sign the first-ever Bitcoin transaction confirmed in block #170.\n';
+text += 'This message is signed with the same private key.';
+
+function encode_message(text) {
+  // Given an ascii-encoded text message, serialize a byte array
+  // with the Bitcoin protocol prefix string followed by the text
+  // and both components preceded by a length byte.
+  // Returns a 32-byte hex value.
+  const prefix = Buffer.from('Bitcoin Signed Message:\n', 'ascii');
+  const message = Buffer.from(text, 'ascii');
+
+  function compactSize(n) {
+    if (n < 0xfd) return Buffer.from([n]);
+    throw new Error('message too long');
+  }
+
+  const buf = Buffer.concat([
+    compactSize(prefix.length),
+    prefix,
+    compactSize(message.length),
+    message,
+  ]);
+  console.log({ buf });
+
+  // 4) double‑SHA256
+  const hash1 = crypto.createHash('sha256').update(buf).digest();
+  const hash2 = crypto.createHash('sha256').update(hash1).digest();
+
+  // 5) return 32‑byte result as hex
+  return hash2.toString('hex');
+}
+
+console.log(encode_message(text));
+
+// const byteArray = new Uint8Array([72, 101, 108, 108, 111]);
+// const decoder = new TextDecoder();
+// const val = decoder.decode(byteArray); // "Hello"
+// const encoder = new TextEncoder();
+// const encodedByteArray = encoder.encode(val);
+// console.log({ encodedByteArray, val });
