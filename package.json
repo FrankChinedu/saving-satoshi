@@ -9,6 +9,7 @@
   "test": "echo \"Error: no test specified\" && exit 1"
  },
  "dependencies": {
-  "@savingsatoshi/bech32js": "^1.0.1"
+  "@savingsatoshi/bech32js": "^1.0.1",
+  "@savingsatoshi/secp256k1js": "^1.0.1"
  }
 }

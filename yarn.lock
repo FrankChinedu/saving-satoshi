@@ -6,3 +6,8 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@savingsatoshi/bech32js/-/bech32js-1.0.1.tgz#ec1799543c2a91b58ef7aedf8d4974f3383f2f81"
   integrity sha512-nWTRzoYyh13/CCQeOnR9Ial7MjTT4ip+oycp70qub/m/ClfF3JTCMNR/emDEbPTv9uRzcgWLyLCNiw4dkUwUIg==
+
+"@savingsatoshi/secp256k1js@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@savingsatoshi/secp256k1js/-/secp256k1js-1.0.1.tgz#41b2ed91827148b488312058dfd535e96afd2989"
+  integrity sha512-XC9LOXakxi/hQWsxN7ybG6xHbaf27A7qE8J9zXoQbkWuZxXOLosvPZRTHlBRBxuM7nR8IywwvoaVoIlVUqjhpQ==
